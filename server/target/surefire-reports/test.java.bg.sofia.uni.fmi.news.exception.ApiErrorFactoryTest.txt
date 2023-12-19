@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: test.java.bg.sofia.uni.fmi.news.exception.ApiErrorFactoryTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in test.java.bg.sofia.uni.fmi.news.exception.ApiErrorFactoryTest

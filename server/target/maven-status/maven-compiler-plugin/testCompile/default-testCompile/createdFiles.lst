@@ -1,0 +1,5 @@
+test/java/bg/sofia/uni/fmi/news/verification/VerifierTest.class
+test/java/bg/sofia/uni/fmi/news/exception/ApiErrorFactoryTest.class
+test/java/bg/sofia/uni/fmi/news/NewsArticleSearcherTest.class
+test/java/bg/sofia/uni/fmi/news/adapter/NewsApiAdapterTest.class
+test/java/bg/sofia/uni/fmi/news/url/NewsUrlBuilderTest.class

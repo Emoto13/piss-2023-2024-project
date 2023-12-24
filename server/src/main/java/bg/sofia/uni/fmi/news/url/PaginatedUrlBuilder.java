@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public interface PaginatedUrlBuilder {
     NewsUrlBuilder reset();
-    NewsUrlBuilder withNextPage();
+    NewsUrlBuilder withPage(int page);
 
     NewsUrlBuilder withCountry(String country);
 

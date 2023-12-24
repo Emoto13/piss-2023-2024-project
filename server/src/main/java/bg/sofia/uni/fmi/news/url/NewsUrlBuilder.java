@@ -51,11 +51,10 @@ public class NewsUrlBuilder implements PaginatedUrlBuilder {
         return this;
     }
 
-    public NewsUrlBuilder withNextPage() {
-        this.page++;
+    public NewsUrlBuilder withPage(int page) {
+        this.page = page;
         return this;
     }
-
 
     public NewsUrlBuilder withCountry(String country) {
         this.country = country;
@@ -69,9 +68,12 @@ public class NewsUrlBuilder implements PaginatedUrlBuilder {
 
     public NewsUrlBuilder withKeywords(Collection<String> keywords) {
         if (keywords.isEmpty()) {
-            throw new IllegalArgumentException("Keywords have at least one element");
-        } else if (Verifier.containsEmptyOrNull(keywords)) {
-            throw new IllegalArgumentException("No keyword should be empty or null");
+            //throw new IllegalArgumentException("Keywords have at least one element");
+            return this;
+        }
+        else if (Verifier.containsEmptyOrNull(keywords)) {
+            //throw new IllegalArgumentException("No keyword should be empty or null");
+            return this;
         }
         this.keywords.addAll(keywords);
         return this;
@@ -82,9 +84,9 @@ public class NewsUrlBuilder implements PaginatedUrlBuilder {
     }
 
     public String build() {
-        if (keywords.isEmpty()) {
-            throw new IllegalStateException("No keywords provided");
-        }
+        //if (keywords.isEmpty()) {
+        //   throw new IllegalStateException("No keywords provided");
+        //}
 
         String keywordsParameter = parameterOrNull(UrlParameter.KEYWORDS.getName(), String.join("+", keywords));
         String countryParameter = parameterOrNull(UrlParameter.COUNTRY.getName(), country);

@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class NewApiAdapter implements ApiAdapter {
+public class NewsApiAdapter implements ApiAdapter {
     private final HttpClient httpClient;
     private PaginatedUrlBuilder urlBuilder;
 
-    public NewApiAdapter(PaginatedUrlBuilder urlBuilder, HttpClient httpClient) {
+    public NewsApiAdapter(PaginatedUrlBuilder urlBuilder, HttpClient httpClient) {
         this.urlBuilder = urlBuilder;
         this.httpClient = httpClient;
     }
@@ -49,34 +49,21 @@ public class NewApiAdapter implements ApiAdapter {
         return processRawResponse(response);
     }
 
-    private List<Article> getPaginatedArticles(int totalResults) throws ApiError, FailedToRetrieveArticlesException {
-        List<Article> articles = new ArrayList<>();
-        while (urlBuilder.getSeenArticles() < totalResults) {
-            urlBuilder = urlBuilder.withNextPage();
-            ArticlesResponse response = getArticlesResponse(urlBuilder.build());
-            if (response.hasError()) {
-                throw ApiErrorFactory.createError(response.getErrorCode());
-            }
-
-            articles.addAll(response.getArticles());
-        }
-        return articles;
-    }
 
     public List<Article> getArticles(GetArticlesParameters parameters) throws ApiError,
             FailedToRetrieveArticlesException {
         this.urlBuilder = this.urlBuilder.reset()
                 .withKeywords(parameters.keywords())
                 .withCountry(parameters.country())
-                .withCategory(parameters.category());
+                .withCategory(parameters.category())
+                .withPage(parameters.page());
 
-        ArticlesResponse initialResponse = getArticlesResponse(urlBuilder.build());
-        if (initialResponse.hasError()) {
-            throw ApiErrorFactory.createError(initialResponse.getErrorCode());
-        }
+        ArticlesResponse response = getArticlesResponse(urlBuilder.build());
+        if (response.hasError()) {
+            throw ApiErrorFactory.createError(response.getErrorCode());
+        } 
 
-        List<Article> paginatedArticles = getPaginatedArticles(initialResponse.getTotalResults());
-        return Stream.concat(initialResponse.getArticles().stream(), paginatedArticles.stream())
+        return Stream.concat(response.getArticles().stream(), response.getArticles().stream())
                 .collect(Collectors.toList());
     }
 }

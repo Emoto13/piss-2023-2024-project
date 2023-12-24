@@ -24,7 +24,6 @@ public class ArticlesResponse {
         return totalResults;
     }
 
-
     public List<Article> getArticles() {
         return articles;
     }

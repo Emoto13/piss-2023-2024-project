@@ -6,5 +6,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ArticleSearcher {
-    List<Article> searchArticlesBy(Collection<String> keywords, String country, String category);
+    List<Article> searchArticlesBy(Collection<String> keywords, String country, String category, Integer page);
 }

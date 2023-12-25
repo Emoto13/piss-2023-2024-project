@@ -79,9 +79,6 @@ public class NewsUrlBuilder implements PaginatedUrlBuilder {
         return this;
     }
 
-    public int getSeenArticles() {
-        return page * PAGE_SIZE;
-    }
 
     public String build() {
         //if (keywords.isEmpty()) {

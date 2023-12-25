@@ -12,7 +12,5 @@ public interface PaginatedUrlBuilder {
 
     NewsUrlBuilder withKeywords(Collection<String> keywords);
 
-    int getSeenArticles();
-
     String build();
 }

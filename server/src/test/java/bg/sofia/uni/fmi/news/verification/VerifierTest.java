@@ -1,6 +1,5 @@
-package test.java.bg.sofia.uni.fmi.news.verification;
+package bg.sofia.uni.fmi.news.verification;
 
-import bg.sofia.uni.fmi.news.verification.Verifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;

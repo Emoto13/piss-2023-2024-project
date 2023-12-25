@@ -1,4 +1,4 @@
-package bg.sofia.uni.fmi.news;
+package bg.sofia.uni.fmi.news.searcher;
 
 import bg.sofia.uni.fmi.news.article.Article;
 

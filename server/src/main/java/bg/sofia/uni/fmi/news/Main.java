@@ -1,14 +1,13 @@
 package bg.sofia.uni.fmi.news;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
+import bg.sofia.uni.fmi.news.handler.NewsArticleHandler;
+import bg.sofia.uni.fmi.news.searcher.ArticleSearcher;
+import bg.sofia.uni.fmi.news.searcher.NewsArticleSearcher;
 import com.sun.net.httpserver.HttpServer;
 
-public class Server {
+public class Main {
 
     public static void main(String[] args) throws Exception {
         System.out.println("STARTING HTTP SERVER");

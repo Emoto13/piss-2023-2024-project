@@ -1,4 +1,4 @@
-package bg.sofia.uni.fmi.news;
+package bg.sofia.uni.fmi.news.handler;
 
 public enum QueryParameter {
     COUNTRY("country"),

@@ -1,8 +1,8 @@
-package bg.sofia.uni.fmi.news;
+package bg.sofia.uni.fmi.news.searcher;
 
 import bg.sofia.uni.fmi.news.adapter.ApiAdapter;
 import bg.sofia.uni.fmi.news.adapter.GetArticlesParameters;
-import bg.sofia.uni.fmi.news.adapter.NewApiAdapter;
+import bg.sofia.uni.fmi.news.adapter.NewsApiAdapter;
 import bg.sofia.uni.fmi.news.article.Article;
 import bg.sofia.uni.fmi.news.exception.ApiError;
 import bg.sofia.uni.fmi.news.exception.FailedToRetrieveArticlesException;
@@ -22,14 +22,14 @@ public class NewsArticleSearcher implements ArticleSearcher {
 
     private void createApiAdapter(String apiKey) {
         PaginatedUrlBuilder urlBuilder = new NewsUrlBuilder(apiKey);
-        this.apiAdapter = new NewApiAdapter(urlBuilder, HttpClient.newHttpClient());
+        this.apiAdapter = new NewsApiAdapter(urlBuilder, HttpClient.newHttpClient());
     }
 
-    public List<Article> searchArticlesBy(Collection<String> keywords, String country, String category) {
+    public List<Article> searchArticlesBy(Collection<String> keywords, String country, String category, Integer page) {
         if (keywords.isEmpty()) {
             throw new IllegalArgumentException("Keywords should not be empty");
         }
-        GetArticlesParameters parameters = new GetArticlesParameters(keywords, country, category);
+        GetArticlesParameters parameters = new GetArticlesParameters(keywords, country, category, page);
         try {
             return apiAdapter.getArticles(parameters);
         } catch (FailedToRetrieveArticlesException | ApiError error) {

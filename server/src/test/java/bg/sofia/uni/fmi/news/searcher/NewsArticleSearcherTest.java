@@ -1,8 +1,6 @@
-package test.java.bg.sofia.uni.fmi.news;
+package bg.sofia.uni.fmi.news.searcher;
 
 import bg.sofia.uni.fmi.news.article.Article;
-import bg.sofia.uni.fmi.news.ArticleSearcher;
-import bg.sofia.uni.fmi.news.NewsArticleSearcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +22,7 @@ public class NewsArticleSearcherTest {
     @Test
     void TestSearchArticlesBy_EmptyKeywords() {
         assertThrows(IllegalArgumentException.class, () -> {
-            searcher.searchArticlesBy(new ArrayList<>(), "", "");
+            searcher.searchArticlesBy(new ArrayList<>(), "", "", 1);
         }, "should throw exception when keywords are empty");
     }
 
@@ -32,7 +30,7 @@ public class NewsArticleSearcherTest {
     void TestSearchArticlesBy_InvalidAPIKey() {
         assertDoesNotThrow(() -> {
             ArticleSearcher testSearcher = new NewsArticleSearcher("invalid-api-key");
-            List<Article> articles = testSearcher.searchArticlesBy(List.of("keyword"), "", "");
+            List<Article> articles = testSearcher.searchArticlesBy(List.of("keyword"), "", "", 1);
             assertNull(articles, "articles shou;d be null");
         }, "should not handle exception when api key is invalid");
     }
@@ -40,7 +38,7 @@ public class NewsArticleSearcherTest {
     @Test
     void TestSearchArticlesBy_WorksCorrectly() {
         assertDoesNotThrow(() -> {
-            List<Article> articles = searcher.searchArticlesBy(List.of("keyword"), "", "");
+            List<Article> articles = searcher.searchArticlesBy(List.of("keyword"), "", "",1);
             assertNotNull(articles, "articles should not be null");
         }, "should not handle exception when api key is invalid");
     }

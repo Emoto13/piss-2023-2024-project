@@ -10,7 +10,6 @@ public class ArticlesResponse {
     @SerializedName("code")
     private String errorCode;
     private int totalResults;
-    private String message;
     private List<Article> articles;
 
     public ArticlesResponse(String status, String errorCode, int totalResults, List<Article> articles) {
@@ -18,10 +17,6 @@ public class ArticlesResponse {
         this.errorCode = errorCode;
         this.totalResults = totalResults;
         this.articles = articles;
-    }
-
-    public int getTotalResults() {
-        return totalResults;
     }
 
 
@@ -38,7 +33,7 @@ public class ArticlesResponse {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s %d %s", status, errorCode, message, totalResults,
+        return String.format("%s %s %d %s", status, errorCode, totalResults,
                 String.join(",", articles.toString()));
     }
 

@@ -1,12 +1,8 @@
-package test.java.bg.sofia.uni.fmi.news.url;
+package bg.sofia.uni.fmi.news.url;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import bg.sofia.uni.fmi.news.url.NewsUrlBuilder;
-import bg.sofia.uni.fmi.news.url.PaginatedUrlBuilder;
-import bg.sofia.uni.fmi.news.url.UrlParameter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,13 +45,12 @@ public class NewsUrlBuilderTest {
 
     @Test
     void TestWithNextPageWorksCorrectly() {
-        int pages = 1;
-        assertEquals(urlBuilder.getSeenArticles(), pages * NewsUrlBuilder.PAGE_SIZE,
-                "should calculate initial seen pages correctly");
-        urlBuilder = urlBuilder.withNextPage();
-        pages++;
-        assertEquals(urlBuilder.getSeenArticles(), pages * NewsUrlBuilder.PAGE_SIZE,
-                "should calculate incremented seen pages correctly");
+        int page = 1;
+        urlBuilder = urlBuilder.withPage(page);
+
+        assertTrue(urlBuilder.build().contains("page=1"), "should calculate initial page correctly");
+        urlBuilder = urlBuilder.withPage(++page);
+        assertTrue(urlBuilder.build().contains("page=2"), "should calculate incremented seen pages correctly");
     }
 
     @Test
@@ -64,25 +59,11 @@ public class NewsUrlBuilderTest {
                 new ArrayList<>(),
                 List.of("")
         );
-        List<Exception> exceptions = Arrays.asList(
-                new IllegalArgumentException(),
-                new IllegalArgumentException()
-        );
 
         for (int i = 0; i < keywordsList.size(); i++) {
             Collection<String> keywords = keywordsList.get(i);
-            Exception exception = exceptions.get(i);
-            assertThrows(exception.getClass(), () -> {
-                urlBuilder.withKeywords(keywords);
-            }, "should throw exception upon invalid keywords");
+            assertEquals(urlBuilder, urlBuilder.withKeywords(keywords), "url builder should not change upon empty or missing keywords");
         }
-    }
-
-    @Test
-    void TestCannotCallBuildWithNoKeywords() {
-        assertThrows(IllegalStateException.class, () -> {
-            urlBuilder.build();
-        }, "should throw exception if trying to get url without keywords");
     }
 
     @Test

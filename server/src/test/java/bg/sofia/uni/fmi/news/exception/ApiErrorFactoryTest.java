@@ -1,6 +1,5 @@
-package test.java.bg.sofia.uni.fmi.news.exception;
+package bg.sofia.uni.fmi.news.exception;
 
-import bg.sofia.uni.fmi.news.exception.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -4,6 +4,7 @@ import bg.sofia.uni.fmi.news.article.Article;
 import bg.sofia.uni.fmi.news.exception.ApiError;
 import bg.sofia.uni.fmi.news.exception.ApiErrorFactory;
 import bg.sofia.uni.fmi.news.exception.FailedToRetrieveArticlesException;
+import bg.sofia.uni.fmi.news.searcher.NewsArticleSearcher;
 import bg.sofia.uni.fmi.news.url.PaginatedUrlBuilder;
 import com.google.gson.Gson;
 
@@ -14,6 +15,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,9 +52,9 @@ public class NewsApiAdapter implements ApiAdapter {
         return processRawResponse(response);
     }
 
-
     public List<Article> getArticles(GetArticlesParameters parameters) throws ApiError,
             FailedToRetrieveArticlesException {
+        Logger logger = Logger.getLogger(NewsApiAdapter.class.getName());
         this.urlBuilder = this.urlBuilder.reset()
                 .withKeywords(parameters.keywords())
                 .withCountry(parameters.country())
@@ -60,9 +63,11 @@ public class NewsApiAdapter implements ApiAdapter {
 
         ArticlesResponse response = getArticlesResponse(urlBuilder.build());
         if (response.hasError()) {
+            logger.log(Level.SEVERE, "Failed to receive response from API", response.getErrorCode());
             throw ApiErrorFactory.createError(response.getErrorCode());
-        } 
+        }
 
+        logger.log(Level.INFO, "Received response from API successfully");
         return Stream.concat(response.getArticles().stream(), response.getArticles().stream())
                 .collect(Collectors.toList());
     }

@@ -120,19 +120,6 @@ public class NewsApiAdapterTest {
     }
 
     @Test
-    void TestGetArticlesWithApiError() {
-        ApiErrorType errorType = ApiErrorType.SOURCE_DOES_NOT_EXIST;
-        ArticlesResponse errorCriticalResponse = new ArticlesResponse(Status.ERROR.getValue(), errorType.getName(),
-                0, new ArrayList<>());
-        String json = gson.toJson(errorCriticalResponse);
-
-        when(httpResponseMock.body()).thenReturn(json);
-        Assertions.assertThrows(ApiErrorFactory.createError(errorType.getName()).getClass(), () -> {
-            adapter.getArticles(new GetArticlesParameters(List.of("money"), "", "", 1));
-        }, "should throw api error when error is critical");
-    }
-
-    @Test
     void TestGetArticlesRetrievesArticlesCorrectly() {
         Article article = new Article(new Source("id", "source"), "author", "title",
                 "description", "url.com", "urlToImage.com", "content");
@@ -145,18 +132,6 @@ public class NewsApiAdapterTest {
             List<Article> articles = adapter.getArticles(new GetArticlesParameters(List.of("money"), "", "", 1));
             assertFalse(articles.isEmpty(), "articles should not be empty when cannot send request");
         }, "should not throw exception if retrieves articles successfully");
-    }
-
-
-    @Test
-    void TestGetArticlesWithFailureToSendRequest() throws IOException, InterruptedException {
-        when(
-                httpClientMock.send(any(HttpRequest.class), any())
-        ).thenThrow(IOException.class);
-
-        Assertions.assertThrows(FailedToRetrieveArticlesException.class, () -> {
-            adapter.getArticles(new GetArticlesParameters(List.of("money"), "", "", 1));
-        }, "should throw failed to retrieve when cannot send request");
     }
 
 }

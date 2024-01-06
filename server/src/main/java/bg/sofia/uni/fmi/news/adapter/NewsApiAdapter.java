@@ -29,28 +29,6 @@ public class NewsApiAdapter implements ApiAdapter {
         this.httpClient = httpClient;
     }
 
-    private HttpRequest buildRequest(String url) {
-        return HttpRequest.newBuilder(URI.create(url)).build();
-    }
-
-    private HttpResponse<String> sendRequest(HttpRequest request) throws FailedToRetrieveArticlesException {
-        try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            throw new FailedToRetrieveArticlesException(e.getMessage());
-        }
-    }
-
-    private ArticlesResponse processRawResponse(HttpResponse<String> response) {
-        Gson gson = new Gson();
-        return gson.fromJson(response.body(), ArticlesResponse.class);
-    }
-
-    public ArticlesResponse getArticlesResponse(String url) throws FailedToRetrieveArticlesException {
-        HttpRequest request = buildRequest(url);
-        HttpResponse<String> response = sendRequest(request);
-        return processRawResponse(response);
-    }
 
     public List<Article> getArticles(GetArticlesParameters parameters) {
         Logger logger = Logger.getLogger(NewsApiAdapter.class.getName());

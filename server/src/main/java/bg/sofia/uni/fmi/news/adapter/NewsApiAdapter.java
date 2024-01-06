@@ -29,46 +29,45 @@ public class NewsApiAdapter implements ApiAdapter {
         this.httpClient = httpClient;
     }
 
-    private HttpRequest buildRequest(String url) {
-        return HttpRequest.newBuilder(URI.create(url)).build();
-    }
 
-    private HttpResponse<String> sendRequest(HttpRequest request) throws FailedToRetrieveArticlesException {
-        try {
-            return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            throw new FailedToRetrieveArticlesException(e.getMessage());
-        }
-    }
-
-    private ArticlesResponse processRawResponse(HttpResponse<String> response) {
-        Gson gson = new Gson();
-        return gson.fromJson(response.body(), ArticlesResponse.class);
-    }
-
-    public ArticlesResponse getArticlesResponse(String url) throws FailedToRetrieveArticlesException {
-        HttpRequest request = buildRequest(url);
-        HttpResponse<String> response = sendRequest(request);
-        return processRawResponse(response);
-    }
-
-    public List<Article> getArticles(GetArticlesParameters parameters) throws ApiError,
-            FailedToRetrieveArticlesException {
+    public List<Article> getArticles(GetArticlesParameters parameters) {
         Logger logger = Logger.getLogger(NewsApiAdapter.class.getName());
         this.urlBuilder = this.urlBuilder.reset()
                 .withKeywords(parameters.keywords())
                 .withCountry(parameters.country())
-                .withCategory(parameters.category())
-                .withPage(parameters.page());
+                .withCategory(parameters.category());
 
-        ArticlesResponse response = getArticlesResponse(urlBuilder.build());
-        if (response.hasError()) {
-            logger.log(Level.SEVERE, "Failed to receive response from API", response.getErrorCode());
-            throw ApiErrorFactory.createError(response.getErrorCode());
+        int n = 2;
+        List<ArticleFetcher> fetchers = new ArrayList<>();
+        List<Thread> threads = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            fetchers.add(new ArticleFetcher(this.urlBuilder.copy(), this.httpClient,1));
+            threads.add(new Thread(fetchers.get(i)));
         }
 
-        logger.log(Level.INFO, "Received response from API successfully");
-        return Stream.concat(response.getArticles().stream(), response.getArticles().stream())
-                .collect(Collectors.toList());
+        logger.log(Level.INFO, "Starting threads");
+        for (Thread t : threads) {
+            t.start();
+        }
+
+        while (true) {
+            boolean allAreDone = true;
+            for (Thread t : threads) {
+                allAreDone = allAreDone && !t.isAlive();
+            }
+
+            if (allAreDone) {
+                break;
+            }
+        }
+
+        logger.log(Level.INFO, "Threads are done, combining results");
+        List<Article> result = new ArrayList<>();
+        for (ArticleFetcher f: fetchers) {
+            result.addAll(f.getArticles());
+        }
+
+        logger.log(Level.INFO, "Result has this many items", result.size());
+        return result;
     }
 }

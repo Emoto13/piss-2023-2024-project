@@ -13,4 +13,6 @@ public interface PaginatedUrlBuilder {
     NewsUrlBuilder withKeywords(Collection<String> keywords);
 
     String build();
+
+    NewsUrlBuilder copy();
 }

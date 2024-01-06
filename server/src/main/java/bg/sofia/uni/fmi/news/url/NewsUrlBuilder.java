@@ -89,4 +89,13 @@ public class NewsUrlBuilder implements PaginatedUrlBuilder {
 
         return String.format("%s?%s", NewsUrlBuilder.ENDPOINT, String.join("&", parameters));
     }
+
+    @Override
+    public NewsUrlBuilder copy() {
+        return new NewsUrlBuilder(this.apiKey).
+                withKeywords(this.keywords).
+                withCountry(this.country).
+                withCategory(this.category).
+                withPage(this.page);
+    }
 }

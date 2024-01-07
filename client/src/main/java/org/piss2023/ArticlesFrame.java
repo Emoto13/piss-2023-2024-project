@@ -36,7 +36,7 @@ public class ArticlesFrame extends JFrame {
     }
 
     public void setUpGUI() {
-        JLabel statusLabel = new JLabel("Ready.");
+        JLabel statusLabel = new JLabel("Load ready.");
         JLabel countryLabel = new JLabel("Country code:");
         JComboBox<String> byCountryBox = new JComboBox<>(countries);
         byCountryBox.setPreferredSize(new Dimension(50, 30));
@@ -53,7 +53,7 @@ public class ArticlesFrame extends JFrame {
         JCheckBox enableThumbnails = new JCheckBox("Enable thumbnails:");
         enableThumbnails.setToolTipText("Will show images for the articles, may significantly slower the fetching.");
 
-        JButton searchButton = new JButton("Търси");
+        JButton searchButton = new JButton("Search");
 
         mainParamsPanel.add(statusLabel);
         mainParamsPanel.add(countryLabel);
@@ -79,11 +79,14 @@ public class ArticlesFrame extends JFrame {
             }
 
             statusLabel.setText("Loading...");
-            mainPanel.revalidate();
-            mainPanel.repaint();
+            statusLabel.paintImmediately(statusLabel.getVisibleRect());
 
-            // Dialog message that enables changing the status indication while the method is executing
-            JOptionPane.showMessageDialog(null, "Loading", "Status", JOptionPane.INFORMATION_MESSAGE);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+            
             Article[] articlesResponse;
             try {
                 articlesResponse = ArticleRetriever.retrieveArticles(country, category, keywords, enableThumbnails.isSelected());
@@ -104,7 +107,7 @@ public class ArticlesFrame extends JFrame {
             }
             mainPanel.add(scrollPane);
 
-            statusLabel.setText("Ready.");
+            statusLabel.setText("Load ready.");
             mainPanel.revalidate();
             mainPanel.repaint();
         });

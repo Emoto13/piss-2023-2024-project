@@ -3,15 +3,14 @@ package org.piss2023;
 import com.google.gson.Gson;
 import org.article.Article;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class ArticleRetriever {
@@ -43,21 +42,38 @@ public class ArticleRetriever {
     }
 
     public static void fetchIcons(Article[] articles) {
-        for (var article : articles) {
-            ImageIcon icon = new ImageIcon(Objects.requireNonNull(ArticlesFrame.class.getResource("no_preview.png")));
-            // Each icon is the image located on the article urlToImage
-            if (article.getUrlToImage() != null) {
-                try {
-                    URL icon_url = new URL(article.getUrlToImage());
-                    icon = new ImageIcon(icon_url);
-                    Image image = icon.getImage();
-                    image = image.getScaledInstance(80, 50, Image.SCALE_SMOOTH);
-                    icon = new ImageIcon(image);
-                } catch (MalformedURLException ex) {
-                    ex.printStackTrace();
-                }
+        int n = 4;
+        int thmsPerThread = 5;
+        List<ImageFetcher> fetchers = new ArrayList<>();
+        List<Thread> threads = new ArrayList<>();
+
+        for(int i = 0; i < n; i++) {
+            fetchers.add(new ImageFetcher(Arrays.copyOfRange(articles, i*thmsPerThread, i*thmsPerThread + thmsPerThread)));
+            threads.add(new Thread(fetchers.get(i)));
+        }
+
+        for (Thread t : threads) {
+            t.start();
+        }
+
+        while (true) {
+            boolean allAreDone = true;
+            for (Thread t : threads) {
+                allAreDone = allAreDone && !t.isAlive();
             }
-            article.setIcon(icon);
+
+            if (allAreDone) {
+                break;
+            }
+        }
+
+        List<Article> result = new ArrayList<>();
+        for (ImageFetcher f : fetchers) {
+            result.addAll(f.getArticles());
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            articles[i] = result.get(i);
         }
     }
 

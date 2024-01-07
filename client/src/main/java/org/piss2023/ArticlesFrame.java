@@ -86,8 +86,7 @@ public class ArticlesFrame extends JFrame {
             } catch (InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
-            // Dialog message that enables changing the status indication while the method is executing
-            // JOptionPane.showMessageDialog(null, "Loading", "Status", JOptionPane.INFORMATION_MESSAGE);
+            
             Article[] articlesResponse;
             try {
                 articlesResponse = ArticleRetriever.retrieveArticles(country, category, keywords, enableThumbnails.isSelected());

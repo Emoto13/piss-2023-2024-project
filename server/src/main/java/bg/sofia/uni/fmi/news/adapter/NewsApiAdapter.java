@@ -67,7 +67,7 @@ public class NewsApiAdapter implements ApiAdapter {
             result.addAll(f.getArticles());
         }
 
-        logger.log(Level.INFO, "Result has this many items", result.size());
+        logger.log(Level.INFO, String.format("Result has this many items: %d", result.size()));
         return result;
     }
 }

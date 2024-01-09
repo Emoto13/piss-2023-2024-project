@@ -31,7 +31,7 @@ public class NewsArticleSearcherTest {
         assertDoesNotThrow(() -> {
             ArticleSearcher testSearcher = new NewsArticleSearcher("invalid-api-key");
             List<Article> articles = testSearcher.searchArticlesBy(List.of("keyword"), "", "", 1);
-            assertNull(articles, "articles shou;d be null");
+            assertTrue(articles.isEmpty(), "articles should be empty");
         }, "should not handle exception when api key is invalid");
     }
 

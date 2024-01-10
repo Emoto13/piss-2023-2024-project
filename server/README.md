@@ -19,9 +19,15 @@ or
 mvn clean compile assembly:single
 ```
 
+To run tests:
+```
+ mvn clean test -Dnet.bytebuddy.experimental=true
+```
+
 Endpoint: `http://localhost:8000/articles?category=some-category\&country=some-country-iso2&keywords=key-words-separate-by-comma&page\=page-number`
 
 News API documentation: https://newsapi.org/docs/endpoints/top-headlines
+
 
 TODOs:
 1. Validate page value

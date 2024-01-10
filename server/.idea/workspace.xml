@@ -4,11 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b57c5cf5-e29b-4b40-9b60-1cd679763608" name="Changes" comment="" />
+    <list default="true" id="b57c5cf5-e29b-4b40-9b60-1cd679763608" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticleRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticleRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticleRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticleRetriever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticlesFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/org/piss2023/ArticlesFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bg/sofia/uni/fmi/news/adapter/NewsApiAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bg/sofia/uni/fmi/news/adapter/NewsApiAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/handler/NewsArticleHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/handler/NewsArticleHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/searcher/NewsArticleSearcherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/searcher/NewsArticleSearcherTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/ArticleSearcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/NewsArticleSearcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/adapter/ArticlesResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/adapter/ArticlesResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/adapter/GetArticlesParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/adapter/GetArticlesParameters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/adapter/NewApiAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/url/NewsUrlBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/url/NewsUrlBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/url/PaginatedUrlBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bg/sofia/uni/fmi/news/url/PaginatedUrlBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-test.java.bg.sofia.uni.fmi.news.NewsArticleSearcherTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-test.java.bg.sofia.uni.fmi.news.exception.ApiErrorFactoryTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-test.java.bg.sofia.uni.fmi.news.url.NewsUrlBuilderTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-test.java.bg.sofia.uni.fmi.news.verification.VerifierTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/test.java.bg.sofia.uni.fmi.news.NewsArticleSearcherTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/test.java.bg.sofia.uni.fmi.news.exception.ApiErrorFactoryTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/test.java.bg.sofia.uni.fmi.news.url.NewsUrlBuilderTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/test.java.bg.sofia.uni.fmi.news.verification.VerifierTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/java/bg/sofia/uni/fmi/news/NewsArticleSearcherTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/java/bg/sofia/uni/fmi/news/adapter/NewsApiAdapterTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/java/bg/sofia/uni/fmi/news/exception/ApiErrorFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/java/bg/sofia/uni/fmi/news/url/NewsUrlBuilderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test/java/bg/sofia/uni/fmi/news/verification/VerifierTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -31,6 +78,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/Users/emilianspasov/Desktop/piss-2023-2024-project/server"
   }
 }]]></component>
@@ -38,6 +86,95 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="bg.sofia.uni.fmi.news.adapter" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.NewsUrlBuilderTest">
+    <configuration name="ApiErrorFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bg.sofia.uni.fmi.news.exception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bg.sofia.uni.fmi.news.exception" />
+      <option name="MAIN_CLASS_NAME" value="bg.sofia.uni.fmi.news.exception.ApiErrorFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewsApiAdapterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bg.sofia.uni.fmi.news.adapter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bg.sofia.uni.fmi.news.adapter" />
+      <option name="MAIN_CLASS_NAME" value="bg.sofia.uni.fmi.news.adapter.NewsApiAdapterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewsArticleSearcherTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bg.sofia.uni.fmi.news.searcher.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bg.sofia.uni.fmi.news.searcher" />
+      <option name="MAIN_CLASS_NAME" value="bg.sofia.uni.fmi.news.searcher.NewsArticleSearcherTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewsUrlBuilderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bg.sofia.uni.fmi.news.url.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bg.sofia.uni.fmi.news.url" />
+      <option name="MAIN_CLASS_NAME" value="bg.sofia.uni.fmi.news.url.NewsUrlBuilderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VerifierTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bg.sofia.uni.fmi.news.verification.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bg.sofia.uni.fmi.news.verification" />
+      <option name="MAIN_CLASS_NAME" value="bg.sofia.uni.fmi.news.verification.VerifierTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.NewsUrlBuilderTest" />
+        <item itemvalue="JUnit.NewsArticleSearcherTest" />
+        <item itemvalue="JUnit.NewsApiAdapterTest" />
+        <item itemvalue="JUnit.ApiErrorFactoryTest" />
+        <item itemvalue="JUnit.VerifierTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -49,5 +186,57 @@
       <updated>1703009123293</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/bg/sofia/uni/fmi/news/searcher/NewsArticleSearcher.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/searcher/NewsArticleSearcherTest.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/bg/sofia/uni/fmi/news/adapter/NewsApiAdapter.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/bg/sofia/uni/fmi/news/handler/NewsArticleHandlerTest.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/server$NewsApiAdapterTest.ic" NAME="NewsApiAdapterTest Coverage Results" MODIFIED="1704831380767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.adapter.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$NewsArticleHandlerTest.ic" NAME="NewsArticleHandlerTest Coverage Results" MODIFIED="1704831327899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.handler.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$NewsUrlBuilderTest.ic" NAME="NewsUrlBuilderTest Coverage Results" MODIFIED="1704831319842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.url.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$Main.ic" NAME="Main Coverage Results" MODIFIED="1704831297338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$ApiErrorFactoryTest.ic" NAME="ApiErrorFactoryTest Coverage Results" MODIFIED="1704831371422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.exception.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$MainTest.ic" NAME="MainTest Coverage Results" MODIFIED="1704831311739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$VerifierTest.ic" NAME="VerifierTest Coverage Results" MODIFIED="1704831354326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.verification.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/server$NewsArticleSearcherTest.ic" NAME="NewsArticleSearcherTest Coverage Results" MODIFIED="1704831392213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bg.sofia.uni.fmi.news.searcher.*</FILTER>
+    </SUITE>
   </component>
 </project>

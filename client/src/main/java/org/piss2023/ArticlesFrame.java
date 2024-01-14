@@ -39,7 +39,7 @@ public class ArticlesFrame extends JFrame {
         JLabel statusLabel = new JLabel("Load ready.");
         JLabel countryLabel = new JLabel("Country code:");
         JComboBox<String> byCountryBox = new JComboBox<>(countries);
-        byCountryBox.setPreferredSize(new Dimension(50, 30));
+        byCountryBox.setPreferredSize(new Dimension(70, 30));
 
         JLabel categoryLabel = new JLabel("Category:");
         JComboBox<String> byCategoryBox = new JComboBox<>(categories);
@@ -93,23 +93,33 @@ public class ArticlesFrame extends JFrame {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            JList<Article> list = new JList<>(articlesResponse);
-            JScrollPane scrollPane = new JScrollPane(list);
-            scrollPane.setPreferredSize(new Dimension(550, 600));
-            list.setFixedCellHeight(50);
+            if (articlesResponse != null) {
+                JList<Article> list = new JList<>(articlesResponse);
+                JScrollPane scrollPane = new JScrollPane(list);
+                scrollPane.setPreferredSize(new Dimension(550, 600));
+                list.setFixedCellHeight(50);
 
-            ArticleRenderer renderer = new ArticleRenderer();
-            renderer.fasterLoad = !enableThumbnails.isSelected();
-            list.setCellRenderer(renderer);
+                ArticleRenderer renderer = new ArticleRenderer();
+                renderer.fasterLoad = !enableThumbnails.isSelected();
+                list.setCellRenderer(renderer);
 
-            if (mainPanel.getComponentCount() > 2) {
-                mainPanel.remove(mainPanel.getComponent(2));
+                if (mainPanel.getComponentCount() > 2) {
+                    mainPanel.remove(mainPanel.getComponent(2));
+                }
+                mainPanel.add(scrollPane);
+
+                statusLabel.setText("Load ready.");
+                mainPanel.revalidate();
+                mainPanel.repaint();
             }
-            mainPanel.add(scrollPane);
-
-            statusLabel.setText("Load ready.");
-            mainPanel.revalidate();
-            mainPanel.repaint();
+            else {
+                if (mainPanel.getComponentCount() > 2) {
+                    mainPanel.remove(mainPanel.getComponent(2));
+                }
+                statusLabel.setText("No results.");
+                mainPanel.revalidate();
+                mainPanel.repaint();
+            }
         });
 
         setSize(width, height);

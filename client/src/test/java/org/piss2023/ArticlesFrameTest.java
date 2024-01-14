@@ -3,8 +3,7 @@ package org.piss2023;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArticlesFrameTest {
     private ArticlesFrame articlesFrame;
@@ -18,12 +17,12 @@ public class ArticlesFrameTest {
 
     @Test
     void isFrameSuccessfullyCreated() {
-         assertTrue(articlesFrame.getComponentCount() == 1);
+        assertEquals(1, articlesFrame.getComponentCount());
     }
 
     @Test
     void isMainPanelProperlyLoaded() {
-        assertTrue(articlesFrame.mainPanel.getComponentCount() == 2);
+        assertEquals(2, articlesFrame.mainPanel.getComponentCount());
     }
 
 

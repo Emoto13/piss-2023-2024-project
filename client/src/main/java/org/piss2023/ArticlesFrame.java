@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ArticlesFrame extends JFrame {
     final String[] countries = {"ae", "ar", "at", "au", "be",
@@ -36,6 +38,8 @@ public class ArticlesFrame extends JFrame {
     }
 
     public void setUpGUI() {
+        Logger logger = Logger.getLogger(ArticlesFrame.class.getName());
+        logger.log(Level.INFO, "Setting up application layout...");
         JLabel statusLabel = new JLabel("Load ready.");
         JLabel countryLabel = new JLabel("Country code:");
         JComboBox<String> byCountryBox = new JComboBox<>(countries);
@@ -68,6 +72,7 @@ public class ArticlesFrame extends JFrame {
 
         // Search button activates the sending of GET requests
         searchButton.addActionListener(e -> {
+            logger.log(Level.INFO, "Search button pressed");
             String country = "us";
             String category = "general";
             String keywords = keywordsPrompt.getText().trim().replace(' ', ',');
@@ -91,6 +96,7 @@ public class ArticlesFrame extends JFrame {
             try {
                 articlesResponse = ArticleRetriever.retrieveArticles(country, category, keywords, enableThumbnails.isSelected());
             } catch (IOException ex) {
+                logger.log(Level.SEVERE, "Articles could not be fetched");
                 throw new RuntimeException(ex);
             }
             if (articlesResponse != null) {
@@ -113,6 +119,7 @@ public class ArticlesFrame extends JFrame {
                 mainPanel.repaint();
             }
             else {
+                logger.log(Level.WARNING, "No articles retrieved");
                 if (mainPanel.getComponentCount() > 2) {
                     mainPanel.remove(mainPanel.getComponent(2));
                 }
@@ -128,5 +135,6 @@ public class ArticlesFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        logger.log(Level.INFO, "Application layout set up successfully.");
     }
 }

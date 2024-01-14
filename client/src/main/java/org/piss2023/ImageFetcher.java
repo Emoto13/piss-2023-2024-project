@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ImageFetcher implements Runnable {
     private Article[] articles;
@@ -21,10 +23,12 @@ public class ImageFetcher implements Runnable {
     }
     @Override
     public void run() {
+        Logger logger = Logger.getLogger(ImageFetcher.class.getName());
         for (var article : articles) {
             ImageIcon icon = new ImageIcon(Objects.requireNonNull(ArticlesFrame.class.getResource("no_preview.png")));
             // Each icon is the image located on the article urlToImage
             if (article.getUrlToImage() != null) {
+                logger.log(Level.INFO, "Fetching image");
                 try {
                     URL icon_url = new URL(article.getUrlToImage());
                     icon = new ImageIcon(icon_url);

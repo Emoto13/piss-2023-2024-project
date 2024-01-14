@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ArticleRetriever {
     // Send GET request to server and return list of articles
@@ -78,12 +80,16 @@ public class ArticleRetriever {
     }
 
     public static Article[] retrieveArticles(String country, String category, String keywords, boolean enabledThumbnails) throws IOException {
+        Logger logger = Logger.getLogger(ArticleRetriever.class.getName());
         String requestUrl = String.format("http://localhost:8000/articles?country=%s&category=%s", country, category);
         if (!Objects.equals(keywords, "") && !Objects.equals(keywords.charAt(0), ',')) {
             requestUrl += "&keywords=" + keywords;
         }
 
         HttpURLConnection conn = sendRequestToServer(requestUrl);
+        if(conn == null) {
+            logger.log(Level.SEVERE, "Could not establish a connection");
+        }
         assert conn != null;
         String response = getServerResponse(conn);
 
@@ -92,7 +98,9 @@ public class ArticleRetriever {
 
         if (enabledThumbnails) {
             // Fetch icons for every article
+            logger.log(Level.INFO, "Initiating images fetching process");
             fetchIcons(articles);
+            logger.log(Level.INFO, "Images fetching process done");
         }
 
         if (articles.length > 0) {

@@ -43,7 +43,7 @@ public class ArticleRetriever {
 
     public static void fetchIcons(Article[] articles) {
         int n = 4;
-        int thmsPerThread = 5;
+        int thmsPerThread = (int)Math.ceil(articles.length / 4.0);
         List<ImageFetcher> fetchers = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
 
@@ -96,7 +96,7 @@ public class ArticleRetriever {
         }
 
         if (articles.length > 0) {
-            return Arrays.copyOfRange(articles, 0, 20);
+            return Arrays.copyOfRange(articles, 0, Math.min(articles.length, 20));
         }
         return null;
     }

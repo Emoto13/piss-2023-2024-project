@@ -1,6 +1,5 @@
 package org.piss2023;
 
-import org.article.Article;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,16 +7,12 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ArticleRetrieverTest {
-    //private HttpURLConnection connectionMock;
     private URL urlMock;
 
     @BeforeEach

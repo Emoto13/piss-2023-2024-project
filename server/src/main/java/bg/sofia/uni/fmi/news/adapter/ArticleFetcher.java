@@ -77,7 +77,6 @@ public class ArticleFetcher implements Runnable {
         if (response.getArticles() == null) {
             return;
         }
-        this.articles = Stream.concat(response.getArticles().stream(), response.getArticles().stream())
-                .collect(Collectors.toList());
+        this.articles = response.getArticles();
     }
 }

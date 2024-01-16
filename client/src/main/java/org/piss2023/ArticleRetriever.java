@@ -45,13 +45,21 @@ public class ArticleRetriever {
 
     public static void fetchIcons(Article[] articles) {
         int n = 4;
-        int thmsPerThread = (int)Math.ceil(articles.length / 4.0);
+        int imgsPerThread = (int)(articles.length / 4.0);
         List<ImageFetcher> fetchers = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
 
-        for(int i = 0; i < n; i++) {
-            fetchers.add(new ImageFetcher(Arrays.copyOfRange(articles, i*thmsPerThread, i*thmsPerThread + thmsPerThread)));
-            threads.add(new Thread(fetchers.get(i)));
+        if (articles.length <= 4) {
+            fetchers.add(new ImageFetcher(Arrays.copyOfRange(articles, 0, articles.length)));
+            threads.add(new Thread(fetchers.get(0)));
+        }
+        else {
+            for (int i = 0; i < n - 1; i++) {
+                fetchers.add(new ImageFetcher(Arrays.copyOfRange(articles, i * imgsPerThread, i * imgsPerThread + imgsPerThread)));
+                threads.add(new Thread(fetchers.get(i)));
+            }
+            fetchers.add(new ImageFetcher(Arrays.copyOfRange(articles, (n - 1) * imgsPerThread, articles.length)));
+            threads.add(new Thread(fetchers.get(n - 1)));
         }
 
         for (Thread t : threads) {
@@ -104,7 +112,7 @@ public class ArticleRetriever {
         }
 
         if (articles.length > 0) {
-            return Arrays.copyOfRange(articles, 0, Math.min(articles.length, 20));
+            return Arrays.copyOfRange(articles, 0, Math.min(articles.length, 50));
         }
         return null;
     }

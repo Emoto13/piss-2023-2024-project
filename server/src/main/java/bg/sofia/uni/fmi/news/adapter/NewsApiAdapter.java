@@ -41,7 +41,7 @@ public class NewsApiAdapter implements ApiAdapter {
         List<ArticleFetcher> fetchers = new ArrayList<>();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            fetchers.add(new ArticleFetcher(this.urlBuilder.copy(), this.httpClient,1));
+            fetchers.add(new ArticleFetcher(this.urlBuilder.copy(), this.httpClient,i + 1));
             threads.add(new Thread(fetchers.get(i)));
         }
 
